@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<configuration>
+	<property>
+		<name>commons.proxy.factory.class</name>
+		<value>org.shirdrn.tinyframework.commons.proxy.factory.locality.LocalityDatabaseProxyFactory</value>
+		<description></description>
+	</property>
+	<property>
+		<name>commons.proxy.factory.mode.code</name>
+		<value>0</value>
+		<description>
+			0 - invoke a provided method, and proxy is checked before 
+				returning a available one.
+			1 - besides invoking a provided method, the proxy module can 
+				also check itself based on a background thread and doesn't
+				depend on the callers.
+		</description>
+	</property>
+	<property>
+		<name>commons.proxy.factory.locality.geoip.file</name>
+		<value>geoip/geoip-database.dat</value>
+		<description></description>
+	</property>
+</configuration>
