@@ -6,10 +6,16 @@
   <classpathentry kind="src" path="src/main/resources" excluding="**/*.java"/>
   <classpathentry kind="output" path="target/classes"/>
   <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-  <classpathentry kind="src" path="/tinyframework-core"/>
   <classpathentry kind="var" path="M2_REPO/dnsjava/dnsjava/2.1.1/dnsjava-2.1.1.jar"/>
   <classpathentry kind="var" path="M2_REPO/junit/junit/4.8.2/junit-4.8.2.jar"/>
   <classpathentry kind="var" path="M2_REPO/commons-net/commons-net/3.1/commons-net-3.1.jar"/>
   <classpathentry kind="var" path="M2_REPO/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar"/>
   <classpathentry kind="var" path="M2_REPO/log4j/log4j/1.2.16/log4j-1.2.16.jar"/>
+  <classpathentry kind="var" path="M2_REPO/commons-pool/commons-pool/1.5.7/commons-pool-1.5.7.jar"/>
+  <classpathentry kind="var" path="M2_REPO/commons-dbcp/commons-dbcp/1.4/commons-dbcp-1.4.jar"/>
+  <classpathentry kind="var" path="M2_REPO/mysql/mysql-connector-java/5.1.17/mysql-connector-java-5.1.17.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/ibatis/ibatis-core/3.0/ibatis-core-3.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/ibatis/ibatis-sqlmap/2.3.0/ibatis-sqlmap-2.3.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/ibatis/ibatis2-common/2.1.7.597/ibatis2-common-2.1.7.597.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/ibatis/ibatis2-dao/2.1.7.597/ibatis2-dao-2.1.7.597.jar"/>
 </classpath>

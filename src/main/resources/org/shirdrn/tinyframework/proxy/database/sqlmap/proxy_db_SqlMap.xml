@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMapConfig      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig>
+	<properties resource="database.properties" />
+	<settings cacheModelsEnabled="true" enhancementEnabled="true" lazyLoadingEnabled="true" maxRequests="128" maxSessions="64" maxTransactions="16" useStatementNamespaces="true" />
+	<transactionManager type="JDBC">
+		<dataSource type="DBCP">
+			<property name="JDBC.Driver" value="${database.common.driver}" />
+			<property name="JDBC.ConnectionURL" value="${database.proxy.url}" />
+			<property name="JDBC.Username" value="${database.proxy.username}" />
+			<property name="JDBC.Password" value="${database.proxy.password}" />
+			<property name="initialSize" value="1" />
+			<property name="maxActive" value="10" />
+			<property name="maxIdle" value="5" />
+			<property name="minIdle" value="5" />
+			<property name="maxWait" value="60000" />
+			<!-- Use of the validation query can be problematic. If you have difficulty, try without it. -->
+			<property name="validationQuery" value="select null from dual" />
+			<property name="poolPreparedStatements" value="true" />
+			<property name="logAbandoned" value="false" />
+			<property name="removeAbandoned" value="true" />
+			<property name="removeAbandonedTimeout" value="300" />
+			<property name="defaultAutoCommit" value="false" />
+			<property name="defaultTransactionIsolation" value="NONE" />
+			<!--<property name="poolPreparedStatements" value="true"/> -->
+			<!--<property name="Driver.DriverSpecificProperty" value="SomeValue"/> -->
+
+		</dataSource>
+	</transactionManager>
+
+	<!-- List the SQL Map XML files. They can be loaded from the classpath, as they are here -->
+	<sqlMap resource="org/shirdrn/tinyframework/proxy/database/model/sqlmap/proxy_datum_SqlMap.xml" />
+</sqlMapConfig>

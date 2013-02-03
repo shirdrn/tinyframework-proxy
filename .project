@@ -2,9 +2,7 @@
 <projectDescription>
   <name>tinyframework-proxy</name>
   <comment>NO_M2ECLIPSE_SUPPORT: Project files created with the maven-eclipse-plugin are not supported in M2Eclipse.</comment>
-  <projects>
-    <project>tinyframework-core</project>
-  </projects>
+  <projects/>
   <buildSpec>
     <buildCommand>
       <name>org.maven.ide.eclipse.maven2Builder</name>

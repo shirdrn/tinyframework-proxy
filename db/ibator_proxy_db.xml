@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ibatorConfiguration PUBLIC
+	"-//Apache Software Foundation//DTD Apache iBATIS Ibator Configuration 1.0//EN"
+	"http://ibatis.apache.org/dtd/ibator-config_1_0.dtd">
+	
+<ibatorConfiguration>
+	<classPathEntry location="C:\Users\thinkpad\.m2\repository\mysql\mysql-connector-java\5.1.17\mysql-connector-java-5.1.17.jar" />
+	<ibatorContext id="tinyframework-proxy" targetRuntime="Ibatis2Java5">
+		<property name="autoDelimitKeywords" value="true" />
+		<ibatorPlugin type="org.apache.ibatis.ibator.plugins.EqualsHashCodePlugin" />
+		<jdbcConnection 
+			driverClass="com.mysql.jdbc.Driver" 
+			connectionURL="jdbc:mysql://192.168.1.102:3306/proxy_db?useUnicode=true" 
+			userId="yanjun" 
+			password="jeff@shirdrn.org" />
+		<javaModelGenerator targetPackage="org.shirdrn.tinyframework.proxy.database.model" 
+			targetProject="tinyframework-proxy/src/main/java">
+			<property name="enableSubPackages" value="true" />
+		</javaModelGenerator>
+		<sqlMapGenerator targetPackage="org.shirdrn.tinyframework.proxy.database.model.sqlmap" 
+			targetProject="tinyframework-proxy/src/main/java">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+		<daoGenerator 
+			targetPackage="org.shirdrn.tinyframework.proxy.database.dao" 
+			targetProject="tinyframework-proxy/src/main/java" type="IBATIS" 
+			implementationPackage="org.shirdrn.tinyframework.proxy.database.dao.impl">
+			<property name="enableSubPackages" value="true" />
+		</daoGenerator>
+		
+		<table tableName="proxy_datum" modelType="flat">
+			<generatedKey column="id" sqlStatement="MySql" identity="true" type="post" />
+		</table>
+		
+	</ibatorContext>
+</ibatorConfiguration>
