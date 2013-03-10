@@ -40,7 +40,7 @@ public class LocalityFileProxyFactory extends LocalityProxyFactory {
 	@Override
 	public void setReadableContext(ReadableContext readableContext) {
 		super.setReadableContext(readableContext);
-		proxyFileSuffix = readableContext.get("commons.proxy.file.suffix", ".prx");
+		proxyFileSuffix = readableContext.get("tiny.proxy.file.suffix", ".prx");
 		// initialize GeoIP lookup service
 		// use AdvancedLookupService implementation we improved
 		try {
@@ -56,7 +56,7 @@ public class LocalityFileProxyFactory extends LocalityProxyFactory {
 	@Override
 	protected void loadProxies() {
 		// HTTP proxy directory
-		String httpProxyDirName = readableContext.get("commons.proxy.file.dir", "proxies");
+		String httpProxyDirName = readableContext.get("tiny.proxy.file.dir", "proxies");
 		File httpProxyDir = new File(conf, httpProxyDirName);
 		File[] files = httpProxyDir.listFiles(new FilenameFilter() {
 			@Override
@@ -64,6 +64,10 @@ public class LocalityFileProxyFactory extends LocalityProxyFactory {
 				return name.endsWith(proxyFileSuffix);
 			}
 		});
+		if(files == null) {
+			LOG.warn("Can not load proxy files!");
+			return;
+		}
 		for(File file : files) {
 			LOG.info("Load proxy from file;file=" + file);
 			FileInputStream fis = null;

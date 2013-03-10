@@ -153,6 +153,10 @@ public abstract class LocalityProxyFactory extends TinyProxyFactory implements L
 	
 	@Override
 	public TinyProxy select() {
+		if(proxies.isEmpty()) {
+			LOG.warn("No proxy data loaded!");
+			return null;
+		}
 		TinyProxy proxy = null;
 		int which = random.nextInt(proxies.size());
 		Iterator<Entry<String, Selector>> iter = proxies.entrySet().iterator();

@@ -11,7 +11,7 @@ import org.shirdrn.tinyframework.proxy.detector.DefaultProxyDetector;
  * 
  * @author Yanjun
  */
-public abstract class TinyProxyFactory extends Configured implements TinyProxySeletingService {
+public abstract class TinyProxyFactory extends Configured implements TinyProxySelectingService {
 
 	protected TinyProxyMode proxyMode = TinyProxyMode.INVOKE;
 	protected TinyProxyDetector proxyDetector;

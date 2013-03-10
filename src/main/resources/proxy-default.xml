@@ -43,7 +43,7 @@
 	</property>
 	<property>
 		<name>tiny.proxy.factory.locality.geoip.file</name>
-		<value>geoip/GeoIP-106_20121106.dat</value>
+		<value>geoip/GeoIP_DATABASE.dat</value>
 		<description></description>
 	</property>
 	<property>
@@ -82,7 +82,7 @@
 		<description></description>
 	</property>
 	<property>
-		<name>tiny.proxy.http.factory.detector.sample.links</name>
+		<name>tiny.proxy.http.detector.sample.links</name>
 		<value>
 			http://www.dmoz.org/,
 			http://www.apache.org/

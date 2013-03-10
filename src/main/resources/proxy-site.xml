@@ -20,7 +20,7 @@
 	</property>
 	<property>
 		<name>tiny.proxy.factory.locality.geoip.file</name>
-		<value>geoip/geoip-database.dat</value>
+		<value>geoip/GeoIP_DATABASE.dat</value>
 		<description></description>
 	</property>
 </configuration>

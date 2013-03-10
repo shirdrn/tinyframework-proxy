@@ -1,7 +1,7 @@
 package org.shirdrn.tinyframework.proxy.locality;
 
 import org.shirdrn.tinyframework.proxy.TinyProxy;
-import org.shirdrn.tinyframework.proxy.TinyProxySeletingService;
+import org.shirdrn.tinyframework.proxy.TinyProxySelectingService;
 
 /**
  * Proxy service orienting to who needs locality features, besides
@@ -9,7 +9,7 @@ import org.shirdrn.tinyframework.proxy.TinyProxySeletingService;
  * 
  * @author Yanjun
  */
-public interface LocalityProxySelectingService extends TinyProxySeletingService {
+public interface LocalityProxySelectingService extends TinyProxySelectingService {
 
 	/**
 	 * Select a proxy based on given country code by using locality features.

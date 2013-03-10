@@ -7,7 +7,7 @@ package org.shirdrn.tinyframework.proxy.conf;
  * <ol>
  * <li>{@link ReadableContext}: a global configuration object, which can not
  * modify its content in current application scope.</li>
- * <li>{@link WriteableContext}: a writeable configuration object, whose content
+ * <li>{@link WritableContext}: a writable configuration object, whose content
  * can be updated if necessary. </li>
  * </ol>
  * 
@@ -16,7 +16,7 @@ package org.shirdrn.tinyframework.proxy.conf;
 public abstract class Configured {
 	
 	protected ReadableContext readableContext;
-	protected WriteableContext writeableContext;
+	protected WritableContext writableContext;
 	
 	public ReadableContext getReadableContext() {
 		return readableContext;
@@ -26,12 +26,12 @@ public abstract class Configured {
 		this.readableContext = readableContext;
 	}
 	
-	public WriteableContext getWriteableContext() {
-		return writeableContext;
+	public WritableContext getWritableContext() {
+		return writableContext;
 	}
 	
-	public void setWriteableContext(WriteableContext writeableContext) {
-		this.writeableContext = writeableContext;
+	public void setWritableContext(WritableContext writableContext) {
+		this.writableContext = writableContext;
 	}
 	
 }

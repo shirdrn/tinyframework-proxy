@@ -128,7 +128,7 @@ import org.xml.sax.SAXException;
  * <tt>${<i>user.name</i>}</tt> would then ordinarily be resolved to the value
  * of the System property with that name.
  */
-public class Context implements WriteableContext, Iterable<Map.Entry<String,String>> {
+public class Context implements WritableContext, Iterable<Map.Entry<String,String>> {
   
 	private static final Log LOG = LogFactory.getLog(Context.class);
 	private boolean quietmode = true;

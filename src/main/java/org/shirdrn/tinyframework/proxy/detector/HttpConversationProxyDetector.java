@@ -31,9 +31,10 @@ public class HttpConversationProxyDetector extends TinyProxyDetector {
 	
 	public HttpConversationProxyDetector(TinyProxyFactory proxyFactory) {
 		super(proxyFactory);
-		connectTimeout = proxyFactory.getReadableContext().getInt("commons.proxy.http.checker.connect.timeout", 3000);
-		sampleLinks = proxyFactory.getReadableContext().getStrings("commons.proxy.http.checker.sample.links", sampleLinks);
+		connectTimeout = proxyFactory.getReadableContext().getInt("tiny.proxy.http.detector.connect.timeout", 3000);
+		sampleLinks = proxyFactory.getReadableContext().getStrings("tiny.proxy.http.detector.sample.links", sampleLinks);
 		LOG.info("Configured test links;sampleLinks=" + sampleLinks);
+		LOG.info("Timeout configuration;connectTimeout=" + connectTimeout);
 	}
 
 	@Override
@@ -50,9 +51,9 @@ public class HttpConversationProxyDetector extends TinyProxyDetector {
 			SocketAddress addr = new InetSocketAddress(host, port);
 			java.net.Proxy httpProxy = new java.net.Proxy(java.net.Proxy.Type.HTTP, addr);
 			responseCode = crawl(link, httpProxy);
-		} catch (Exception e) {
-			LOG.warn("Proxy status;host=" + host + ",port=" + port + ",exception=" + e.getMessage());
-		}
+		} catch (Exception e) { }
+		
+		LOG.debug("Result;available=" + (responseCode==200) + ",host=" + host + ",port=" + port);
 		return responseCode==200;
 	}
 	

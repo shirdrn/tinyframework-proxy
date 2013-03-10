@@ -13,6 +13,29 @@ public class TinyProxy {
 	protected String user;
 	protected String password;
 	
+	public TinyProxy() {
+		super();
+	}
+	
+	public TinyProxy(String uri) {
+		super();
+		String[] a = uri.split(":");
+		if(a.length <= 2) {
+			this.host = a[0].trim();
+			try {
+				this.port = Integer.parseInt(a[1].trim());
+			} catch (Exception e) {
+				this.port = 80;
+			}
+		}
+	}
+	
+	public TinyProxy(String host, int port) {
+		super();
+		this.host = host;
+		this.port = port;
+	}
+	
 	public String getHost() {
 		return host;
 	}

@@ -14,6 +14,30 @@ public class LocalityProxy extends TinyProxy {
 	protected String countryCode;
 	protected String continent;
 	
+	public LocalityProxy() {
+		super();
+	}
+	
+	public LocalityProxy(String host, int port) {
+		super(host, port);
+	}
+	
+	public LocalityProxy(String uri) {
+		super(uri);
+	}
+	
+	public LocalityProxy(String host, int port, String countryCode, String continent) {
+		super(host, port);
+		this.countryCode = countryCode;
+		this.continent = continent;
+	}
+	
+	public LocalityProxy(String uri, String countryCode, String continent) {
+		super(uri);
+		this.countryCode = countryCode;
+		this.continent = continent;
+	}
+	
 	public String getCountryCode() {
 		return countryCode;
 	}

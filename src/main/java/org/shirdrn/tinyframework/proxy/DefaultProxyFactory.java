@@ -33,7 +33,6 @@ import org.shirdrn.tinyframework.proxy.utils.ObjectFactory;
 public class DefaultProxyFactory extends TinyProxyFactory {
 
 	private static final Log LOG = LogFactory.getLog(DefaultProxyFactory.class);
-	protected File conf;
 	protected String fileSuffix = ".prx";
 	protected Integer currentIndex = 0;
 	protected List<TinyProxy> proxies = new ArrayList<TinyProxy>();
@@ -41,12 +40,10 @@ public class DefaultProxyFactory extends TinyProxyFactory {
 	@Override
 	public void setReadableContext(ReadableContext readableContext) {
 		super.setReadableContext(readableContext);
-		String confName = readableContext.get("tiny.core.conf.dir.name", "conf");
-		conf = new File(confName);
 		fileSuffix = readableContext.get("tiny.proxy.file.suffix", ".prx");
 		// configure proxy checker instance
 		String proxyCheckerClassName = readableContext.get("tiny.proxy.detector.class", 
-				"org.shirdrn.tinyframework.proxy.detector.TelnetProxyChecker");
+				"org.shirdrn.tinyframework.proxy.detector.DefaultProxyDetector");
 		proxyDetector = ObjectFactory.getInstance(proxyCheckerClassName, 
 				TinyProxyDetector.class, this.getClass().getClassLoader(), this);
 		// http proxy dir
@@ -55,7 +52,8 @@ public class DefaultProxyFactory extends TinyProxyFactory {
 		if(httpProxyDirName.startsWith("/")) {
 			httpProxyDir = new File(httpProxyDirName);
 		} else {
-			httpProxyDir = new File(conf, httpProxyDirName);
+			httpProxyDir = new File(httpProxyDirName);
+			LOG.info(httpProxyDir.getAbsolutePath());
 		}
 		// load proxies
 		loadProxies(httpProxyDir);
@@ -68,6 +66,10 @@ public class DefaultProxyFactory extends TinyProxyFactory {
 				return name.endsWith(fileSuffix);
 			}
 		});
+		if(files == null) {
+			LOG.warn("Can not load proxy files!");
+			return;
+		}
 		for(File file : files) {
 			LOG.info("Load proxy from file;file=" + file);
 			FileInputStream fis = null;

@@ -1,5 +1,7 @@
 package org.shirdrn.tinyframework.proxy.detector;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.apache.commons.net.telnet.TelnetClient;
 import org.shirdrn.tinyframework.proxy.TinyProxy;
 import org.shirdrn.tinyframework.proxy.TinyProxyDetector;
@@ -7,6 +9,7 @@ import org.shirdrn.tinyframework.proxy.TinyProxyFactory;
 
 public class TelnetProxyDetector extends TinyProxyDetector {
 
+	private static final Log LOG = LogFactory.getLog(TelnetProxyDetector.class);
 	private static TelnetClient telnetClient = new TelnetClient();
 	private int connectTimeout = 1000;
 	private int socketTimeout = 2000;
@@ -14,8 +17,9 @@ public class TelnetProxyDetector extends TinyProxyDetector {
 	public TelnetProxyDetector(TinyProxyFactory proxyFactory) {
 		super(proxyFactory);
 		// telnet timeout
-		connectTimeout = proxyFactory.getReadableContext().getInt("commons.proxy.telnet.checker.connect.timeout", 1000);
-		socketTimeout = proxyFactory.getReadableContext().getInt("commons.proxy.telnet.checker.socket.timeout", 1000);
+		connectTimeout = proxyFactory.getReadableContext().getInt("tiny.proxy.telnet.detector.connect.timeout", 1000);
+		socketTimeout = proxyFactory.getReadableContext().getInt("tiny.proxy.telnet.detector.socket.timeout", 1000);
+		LOG.info("Timeout configuration;connectTimeout=" + connectTimeout + ",socketTimeout=" + socketTimeout);
 	}
 	
 	@Override
@@ -34,6 +38,8 @@ public class TelnetProxyDetector extends TinyProxyDetector {
 			telnetClient.disconnect();
 			connected = true;
 		} catch (Exception e) { }
+		
+		LOG.debug("Result;available=" + connected + ",host=" + host + ",port=" + port);
 		return connected;
 	}
 

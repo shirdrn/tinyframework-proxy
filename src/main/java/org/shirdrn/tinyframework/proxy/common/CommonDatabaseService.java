@@ -1,6 +1,5 @@
 package org.shirdrn.tinyframework.proxy.common;
 
-
 /**
  * Common abstract service for injecting DAO to services
  * which implement this class.
