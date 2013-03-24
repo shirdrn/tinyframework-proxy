@@ -5,15 +5,5 @@
 *.war
 *.ear
 
-
-src/test/java
-src/test/resources
-src/main/java
-src/main/resources
-pom.xml
-db
 target
-src/test/java
-src/test/resources
-src/main/java
-src/main/resources
+
