@@ -3,6 +3,8 @@ package org.shirdrn.tinyframework.proxy.detector;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,10 +14,9 @@ import org.shirdrn.tinyframework.proxy.TinyProxyDetector;
 import org.shirdrn.tinyframework.proxy.TinyProxyFactory;
 import org.shirdrn.tinyframework.proxy.conf.Context;
 
-import com.sun.javafx.tools.packager.Log;
-
 public class TestProxyDetector {
 
+	private static final Log LOG = LogFactory.getLog(TestProxyDetector.class);
 	TinyProxyFactory factory;
 	TinyProxyDetector detector;
 	List<TinyProxy> proxies = new ArrayList<TinyProxy>();
@@ -51,21 +52,21 @@ public class TestProxyDetector {
 	
 	@Test
 	public void testTelnetProxyDetector() {
-		Log.info("Detect proxy by TelnetProxyDetector:");
+		LOG.info("Detect proxy by TelnetProxyDetector:");
 		detector = new TelnetProxyDetector(factory);
 		for(TinyProxy proxy : proxies) {
 			boolean available = detector.detect(proxy);
-			Log.info("Result;available=" + available + "," + proxy);
+			LOG.info("Result;available=" + available + "," + proxy);
 		}
 	}
 	
 	@Test
 	public void testHttpConversationProxyDetector() {
-		Log.info("Detect proxy by HttpConversationProxyDetector:");
+		LOG.info("Detect proxy by HttpConversationProxyDetector:");
 		detector = new HttpConversationProxyDetector(factory);
 		for(TinyProxy proxy : proxies) {
 			boolean available = detector.detect(proxy);
-			Log.info("Result;available=" + available + "," + proxy);
+			LOG.info("Result;available=" + available + "," + proxy);
 		}
 	}
 	
